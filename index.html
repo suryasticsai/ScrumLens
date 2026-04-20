@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai V - AI Scrum Master | Sprint Automation Expert</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --accent: #0891b2;
+            --accent-light: #06b6d4;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-hover: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border-color: #475569;
+            --code-bg: #1a1f2e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1f3a 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== WATERMARK ===== */
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            opacity: 0.6;
+            z-index: 1000;
+            text-align: right;
+            pointer-events: none;
+        }
+
+        .watermark a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .watermark a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-light);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-light), var(--primary), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero .description {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-light), var(--primary));
+            color: white;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-light);
+            border: 2px solid var(--accent-light);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(6, 182, 212, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* ===== EXPERTISE SECTION ===== */
+        .expertise {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .expertise-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .expertise-card:hover::before {
+            left: 100%;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-light);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
+        }
+
+        .expertise-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-light);
+        }
+
+        .expertise-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        /* ===== CODE PREVIEW SECTION ===== */
+        .code-showcase {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .code-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+
+        .code-container:hover {
+            border-color: var(--accent-light);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.15);
+        }
+
+        .code-header {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(30, 64, 175, 0.1));
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-title {
+            font-weight: 600;
+            color: var(--accent-light);
+            font-size: 1.1rem;
+        }
+
+        .code-version {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+        }
+
+        .code-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .code-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--accent-light);
+            border: 1px solid var(--accent-light);
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .code-btn:hover {
+            background: var(--accent-light);
+            color: var(--bg-dark);
+        }
+
+        .code-content {
+            position: relative;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        code {
+            color: var(--accent-light);
+        }
+
+        .code-comment {
+            color: #6b7280;
+        }
+
+        .code-keyword {
+            color: #f472b6;
+        }
+
+        .code-string {
+            color: #86efac;
+        }
+
+        .code-function {
+            color: #60a5fa;
+        }
+
+        /* ===== USAGE MANUAL SECTION ===== */
+        .manual-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .manual-section h4 {
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .manual-section ol, .manual-section ul {
+            margin-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .manual-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .manual-section code {
+            background: var(--code-bg);
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            color: var(--accent-light);
+            font-family: 'Courier New', monospace;
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(6, 182, 212, 0.05);
+            border-left: 3px solid var(--accent-light);
+            border-radius: 0.5rem;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--accent-light);
+            flex-shrink: 0;
+        }
+
+        .feature-text h5 {
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-text p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ===== COPY NOTIFICATION ===== */
+        .copy-notification {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .copy-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .code-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .watermark {
+                bottom: 10px;
+                right: 10px;
+                font-size: 10px;
+            }
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-light);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WATERMARK -->
+    <div class="watermark">
+        <div>Sai V (PL6K130)</div>
+        <a href="https://www.linkedin.com/in/sai-v/" target="_blank">LinkedIn Profile</a>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">🚀 AI Scrum Master</div>
+            <ul class="nav-links">
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>AI-Powered Sprint Automation</h1>
+        <p class="subtitle">Transforming Agile Workflows with Intelligent Automation</p>
+        <p class="description">
+            I specialize in building advanced automation solutions for Scrum teams. My expertise spans Excel scripting, 
+            JQL query optimization, and intelligent data processing to streamline sprint planning and execution.
+        </p>
+        <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="https://www.linkedin.com/in/sai-v/" target="_blank" class="btn btn-secondary">Connect on LinkedIn</a>
+        </div>
+    </section>
+
+    <!-- EXPERTISE SECTION -->
+    <section class="expertise" id="expertise">
+        <h2 class="section-title">Core Expertise</h2>
+        
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <h3>📊 Excel Automation</h3>
+                <p>Advanced TypeScript-based Excel scripting for complex data transformations, PivotTable generation, and automated reporting.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">ExcelScript</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Automation</span>
+                </div>
+            </div>
+
+            <div class="expertise-card">
+                <h3>🔍 JQL Optimization</h3>
+                <p>Expert in Jira Query Language (JQL) with interactive tools for complex query building and sprint filtering.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">JQL</span>
+                    <span class="tech-tag">Jira</span>
+                    <span class="tech-tag">Query Building</span>
+                </div>
+            </div>
+
+            <div class="expertise-card">
+                <h3>🎯 Sprint Planning</h3>
+                <p>Intelligent sprint analysis tools that identify colored cells, filter critical items, and generate dynamic pivot tables.</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Sprint Analysis</span>
+                    <span class="tech-tag">Data Filtering</span>
+                    <span class="tech-tag">Real-time Progress</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CODE SHOWCASE SECTION -->
+    <section class="code-showcase" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+
+        <!-- PROJECT 1: SprintAnalyzer -->
+        <div class="code-container">
+            <div class="code-header">
+                <div>
+                    <div class="code-title">📈 SprintAnalyzer v0.3</div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                        Automated Sprint Summary Generation with Excel Scripts & PivotTables
+                    </p>
+                </div>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <span class="code-version">v0.3 • TypeScript</span>
+                    <div class="code-actions">
+                        <button class="code-btn" onclick="copyCode('sprint-analyzer-code')">📋 Copy Code</button>
+                        <button class="code-btn" onclick="showModal('sprint-analyzer-manual')">📖 Manual</button>
+                    </div>
+                </div>
+            </div>
+            <div class="code-content">
+                <pre id="sprint-analyzer-code"><span class="code-comment">/**
+ * Title: SprintAnalyzer v0.3
+ * Purpose: Automates sprint data aggregation and PivotTable creation
+ * Version: 0.3 | Ecosystem: SprintVerse01
+ * Developer: Sai V (PL6K130)
+ */</span>
+<span class="code-keyword">function</span> <span class="code-function">main</span>(workbook: ExcelScript.Workbook) {
+  <span class="code-keyword">try</span> {
+    <span class="code-comment">// Get active worksheet</span>
+    <span class="code-keyword">const</span> selectedSheet = workbook.getActiveWorksheet();
+    
+    <span class="code-comment">// Define range and check for overlapping tables</span>
+    <span class="code-keyword">let</span> range = selectedSheet.getRange(<span class="code-string">"A1:DT51"</span>);
+    <span class="code-keyword">const</span> existingTables = selectedSheet.getTables();
+    
+    <span class="code-comment">// Create new table with auto-adjustment</span>
+    <span class="code-keyword">const</span> newTable = workbook.addTable(range, <span class="code-keyword">true</span>);
+    
+    <span class="code-comment">// Perform text replacements for standardization</span>
+    <span class="code-keyword">const</span> replacements = [
+      { find: <span class="code-string">"[M1]-"</span>, replace: <span class="code-string">"[M1] - "</span> },
+      { find: <span class="code-string">"6101"</span>, replace: <span class="code-string">"INC"</span> },
+      { find: <span class="code-string">"Analysis "</span>, replace: <span class="code-string">"Analysis completed for "</span> }
+    ];
+    
+    replacements.forEach(({ find, replace }) => {
+      newTable.getRange().replaceAll(find, replace, { completeMatch: <span class="code-keyword">false</span> });
+    });
+    
+    <span class="code-comment">// Create PivotTable on new worksheet</span>
+    <span class="code-keyword">let</span> SprintAnalysisView = workbook.getWorksheet(<span class="code-string">"SprintAnalysis_View"</span>);
+    <span class="code-keyword">if</span> (!SprintAnalysisView) {
+      SprintAnalysisView = workbook.addWorksheet(<span class="code-string">"SprintAnalysis_View"</span>);
+    }
+    
+    <span class="code-keyword">const</span> newPivotTable = workbook.addPivotTable(<span class="code-string">"PivotTable1"</span>, newTable, SprintAnalysisView.getRange(<span class="code-string">"A3"</span>));
+    newPivotTable.addFilterHierarchy(newPivotTable.getHierarchy(<span class="code-string">"Custom field (Team)"</span>));
+    newPivotTable.addRowHierarchy(newPivotTable.getHierarchy(<span class="code-string">"Component/s"</span>));
+    
+  } <span class="code-keyword">catch</span> (error) {
+    console.log(<span class="code-string">"Error:"</span>, error.message);
+  }
+}</pre>
+            </div>
+        </div>
+
+        <!-- PROJECT 2: MSA Toolkit -->
+        <div class="code-container">
+            <div class="code-header">
+                <div>
+                    <div class="code-title">🏷️ MSA Toolkit - JQL Query Builder</div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                        Interactive Drag-and-Drop JQL Query Construction Tool
+                    </p>
+                </div>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <span class="code-version">v1.0 • HTML/JavaScript</span>
+                    <div class="code-actions">
+                        <button class="code-btn" onclick="copyCode('msa-toolkit-code')">📋 Copy Code</button>
+                        <button class="code-btn" onclick="showModal('msa-toolkit-manual')">📖 Manual</button>
+                    </div>
+                </div>
+            </div>
+            <div class="code-content">
+                <pre id="msa-toolkit-code"><span class="code-comment">// MSA Toolkit - JQL Query Builder
+// Features: Drag-and-drop tags, dynamic JQL generation, real-time preview</span>
+
+<span class="code-keyword">let</span> tagCounter = 0;
+
+<span class="code-comment">// Handle tag input</span>
+document.getElementById(<span class="code-string">'tagInput'</span>).addEventListener(<span class="code-string">'keydown'</span>, <span class="code-keyword">function</span>(event) {
+  <span class="code-keyword">if</span> (event.key === <span class="code-string">'Enter'</span> && <span class="code-keyword">this</span>.value.trim()) {
+    addTag(<span class="code-keyword">this</span>.value.trim());
+    <span class="code-keyword">this</span>.value = <span class="code-string">''</span>;
+  }
+});
+
+<span class="code-comment">// Drag and drop functionality</span>
+<span class="code-keyword">function</span> <span class="code-function">drop</span>(event) {
+  event.preventDefault();
+  <span class="code-keyword">const</span> data = event.dataTransfer.getData(<span class="code-string">"text"</span>);
+  <span class="code-keyword">const</span> tag = document.getElementById(data);
+  
+  <span class="code-keyword">if</span> (tag) {
+    <span class="code-keyword">const</span> clonedTag = tag.cloneNode(<span class="code-keyword">true</span>);
+    clonedTag.id = `tag-${tagCounter++}`;
+    clonedTag.style.backgroundColor = getRandomColor();
+    event.target.appendChild(clonedTag);
+  }
+}
+
+<span class="code-comment">// Generate JQL Query</span>
+<span class="code-keyword">function</span> <span class="code-function">getTags</span>() {
+  <span class="code-keyword">const</span> container = document.getElementById(<span class="code-string">'tagsDropContainer'</span>);
+  <span class="code-keyword">const</span> tagNames = [];
+  <span class="code-keyword">const</span> tags = container.getElementsByClassName(<span class="code-string">'tag'</span>);
+  
+  <span class="code-keyword">for</span> (<span class="code-keyword">let</span> tag <span class="code-keyword">of</span> tags) {
+    tagNames.push(tag.textContent.slice(0, -1).trim());
+  }
+  
+  <span class="code-keyword">const</span> jqlQuery = tagNames.includes(<span class="code-string">'IN'</span>)
+    ? `${tagNames.slice(0, tagNames.indexOf(<span class="code-string">'IN'</span>)).join(<span class="code-string">' '</span>)} IN (${tagNames.slice(tagNames.indexOf(<span class="code-string">'IN'</span>) + 1).join(<span class="code-string">', '</span>)})`
+    : `issuekey in (${tagNames.join(<span class="code-string">', '</span>)})`;
+  
+  document.getElementById(<span class="code-string">'tagsOutput'</span>).value = jqlQuery;
+}</pre>
+            </div>
+        </div>
+
+        <!-- PROJECT 3: SprintPlanWizard -->
+        <div class="code-container">
+            <div class="code-header">
+                <div>
+                    <div class="code-title">🧙 SprintPlanWizard - Advanced Filtering</div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                        Intelligent Row Filtering with Real-time Progress Tracking
+                    </p>
+                </div>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <span class="code-version">v0.6 • TypeScript</span>
+                    <div class="code-actions">
+                        <button class="code-btn" onclick="copyCode('sprint-wizard-code')">📋 Copy Code</button>
+                        <button class="code-btn" onclick="showModal('sprint-wizard-manual')">📖 Manual</button>
+                    </div>
+                </div>
+            </div>
+            <div class="code-content">
+                <pre id="sprint-wizard-code"><span class="code-comment">/**
+ * SprintPlanWizard - Advanced Sprint Data Filtering
+ * Version: 0.6 | Ecosystem: SprintVerse01
+ * Developer: Sai V (PL6K130)
+ * Purpose: Filter colored cells and create dynamic PivotTables
+ */</span>
+
+<span class="code-keyword">function</span> <span class="code-function">main</span>(workbook: ExcelScript.Workbook) {
+  <span class="code-keyword">const</span> now = <span class="code-keyword">new</span> Date();
+  <span class="code-keyword">let</span> sheet = workbook.getActiveWorksheet();
+  <span class="code-keyword">let</span> usedRange = sheet.getUsedRange();
+  
+  <span class="code-keyword">let</span> rowCount = usedRange.getRowCount();
+  <span class="code-keyword">let</span> colCount = usedRange.getColumnCount();
+  
+  <span class="code-comment">// Create destination sheet</span>
+  <span class="code-keyword">let</span> newSheet = workbook.addWorksheet(<span class="code-string">"ColoredPivotTab"</span>);
+  
+  <span class="code-comment">// Add progress loader</span>
+  <span class="code-keyword">let</span> loaderCell = newSheet.getRange(<span class="code-string">"A1"</span>);
+  loaderCell.setValue(<span class="code-string">"Processing: 0%"</span>);
+  
+  <span class="code-comment">// Copy headers</span>
+  <span class="code-keyword">let</span> headerRow = usedRange.getRow(0);
+  newSheet.getRangeByIndexes(1, 0, 1, colCount).copyFrom(headerRow);
+  
+  <span class="code-comment">// Scan and filter rows with colored cells</span>
+  <span class="code-keyword">let</span> outRow = 2;
+  <span class="code-keyword">for</span> (<span class="code-keyword">let</span> i = 1; i &lt; rowCount; i++) {
+    <span class="code-keyword">let</span> rowRange = usedRange.getRow(i);
+    <span class="code-keyword">let</span> includeRow = <span class="code-keyword">false</span>;
+    
+    <span class="code-comment">// Check for colored cells</span>
+    <span class="code-keyword">for</span> (<span class="code-keyword">let</span> j = 0; j &lt; colCount; j++) {
+      <span class="code-keyword">let</span> cell = rowRange.getCell(0, j);
+      <span class="code-keyword">let</span> fillColor = cell.getFormat().getFill().getColor();
+      
+      <span class="code-keyword">if</span> (fillColor && fillColor !== <span class="code-string">"#FFFFFF"</span>) {
+        includeRow = <span class="code-keyword">true</span>;
+        <span class="code-keyword">break</span>;
+      }
+    }
+    
+    <span class="code-keyword">if</span> (includeRow) {
+      newSheet.getRangeByIndexes(outRow, 0, 1, colCount).copyFrom(rowRange);
+      outRow++;
+    }
+    
+    <span class="code-comment">// Update progress</span>
+    <span class="code-keyword">let</span> progress = Math.round((i / rowCount) * 100);
+    loaderCell.setValue(`Processing: ${progress}%`);
+  }
+  
+  <span class="code-comment">// Create PivotTable</span>
+  <span class="code-keyword">let</span> coloredRange = newSheet.getRangeByIndexes(1, 0, outRow - 1, colCount);
+  <span class="code-keyword">let</span> pivot = workbook.addPivotTable(<span class="code-string">"ColoredPivot"</span>, coloredRange, newSheet.getRange(<span class="code-string">"A3"</span>));
+  
+  <span class="code-comment">// Configure pivot fields</span>
+  pivot.addRowHierarchy(pivot.getHierarchy(<span class="code-string">"Team"</span>));
+  pivot.addDataHierarchy(pivot.getHierarchy(<span class="code-string">"Key"</span>), ExcelScript.AggregationFunction.count);
+  
+  loaderCell.setValue(<span class="code-string">"✅ 100% Complete"</span>);
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALS FOR MANUALS -->
+    <div id="sprint-analyzer-manual" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('sprint-analyzer-manual')">✕</button>
+            <h3 style="color: var(--accent-light); margin-bottom: 1.5rem;">📖 SprintAnalyzer v0.3 - Usage Manual</h3>
+            
+            <div class="manual-section">
+                <h4>🎯 Overview</h4>
+                <p>SprintAnalyzer automates the creation of sprint summary tables and PivotTables from your Excel data. It standardizes data formatting and creates dynamic analysis views.</p>
+            </div>
+
+            <div class="manual-section">
+                <h4>📋 Prerequisites</h4>
+                <ul>
+                    <li>Excel with Office Scripts enabled</li>
+                    <li>Data in range A1:DT51 (customizable)</li>
+                    <li>Column headers in the first row</li>
+                </ul>
+            </div>
+
+            <div class="manual-section">
+                <h4>🚀 How to Use</h4>
+                <ol>
+                    <li>Open your Excel workbook with sprint data</li>
+                    <li>Go to <strong>Automate → New Script</strong></li>
+                    <li>Paste the SprintAnalyzer code</li>
+                    <li>Click <strong>Run</strong> to execute</li>
+                    <li>Check the new <strong>SprintAnalysis_View</strong> sheet for results</li>
+                </ol>
+            </div>
+
+            <div class="manual-section">
+                <h4>✨ Key Features</h4>
+                <div class="features">
+                    <div class="feature-item">
+                        <div class="feature-icon">🔄</div>
+                        <div class="feature-text">
+                            <h5>Auto-Adjustment</h5>
+                            <p>Detects overlapping tables and adjusts range automatically</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📝</div>
+                        <div class="feature-text">
+                            <h5>Text Standardization</h5>
+                            <p>Replaces prefixes and codes for consistent formatting</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-text">
+                            <h5>Dynamic PivotTables</h5>
+                            <p>Creates configured pivot tables with team and component hierarchies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="manual-section">
+                <h4>⚙️ Customization</h4>
+                <p>To modify the range, update line 26:</p>
+                <code>let range = selectedSheet.getRange("A1:DT51");</code>
+                <p style="margin-top: 1rem;">To add more replacements, extend the replacements array with new find/replace pairs.</p>
+            </div>
+
+            <div class="manual-section">
+                <h4>🐛 Troubleshooting</h4>
+                <ul>
+                    <li><strong>Script fails:</strong> Ensure data exists in the specified range</li>
+                    <li><strong>No PivotTable created:</strong> Check that required column headers exist</li>
+                    <li><strong>Overlapping error:</strong> Script automatically adjusts range below existing tables</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="msa-toolkit-manual" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('msa-toolkit-manual')">✕</button>
+            <h3 style="color: var(--accent-light); margin-bottom: 1.5rem;">📖 MSA Toolkit - JQL Query Builder Manual</h3>
+            
+            <div class="manual-section">
+                <h4>🎯 Overview</h4>
+                <p>MSA Toolkit is an interactive JQL (Jira Query Language) builder that simplifies complex query construction through drag-and-drop interface.</p>
+            </div>
+
+            <div class="manual-section">
+                <h4>🎮 How to Use</h4>
+                <ol>
+                    <li><strong>Create Tags:</strong> Type in the input field and press Enter</li>
+                    <li><strong>Drag Operators:</strong> Drag default tags (IN, AND, OR, =, >, <, etc.) to the drop zone</li>
+                    <li><strong>Build Query:</strong> Arrange tags in the correct order</li>
+                    <li><strong>Generate JQL:</strong> Click "Get Tags" button</li>
+                    <li><strong>Copy Result:</strong> Copy the generated JQL query</li>
+                </ol>
+            </div>
+
+            <div class="manual-section">
+                <h4>🏷️ Available Operators</h4>
+                <ul>
+                    <li><strong>IN:</strong> Checks if value is in a list</li>
+                    <li><strong>AND:</strong> Logical AND operator</li>
+                    <li><strong>OR:</strong> Logical OR operator</li>
+                    <li><strong>=, >, <, >=, <=:</strong> Comparison operators</li>
+                </ul>
+            </div>
+
+            <div class="manual-section">
+                <h4>💡 Examples</h4>
+                <p><strong>Example 1 - Simple Issue List:</strong></p>
+                <code>issuekey in (PROJ-123, PROJ-124, PROJ-125)</code>
+                <p style="margin-top: 1rem;"><strong>Example 2 - Using IN Operator:</strong></p>
+                <code>status IN (Open, In Progress, Ready)</code>
+                <p style="margin-top: 1rem;"><strong>Example 3 - Complex Query:</strong></p>
+                <code>project = PROJ AND status IN (Open, In Progress) AND assignee = currentUser()</code>
+            </div>
+
+            <div class="manual-section">
+                <h4>✨ Features</h4>
+                <div class="features">
+                    <div class="feature-item">
+                        <div class="feature-icon">🎨</div>
+                        <div class="feature-text">
+                            <h5>Color Coding</h5>
+                            <p>Each tag gets a unique color for easy identification</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✏️</div>
+                        <div class="feature-text">
+                            <h5>Edit Tags</h5>
+                            <p>Double-click any tag to edit its value</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🗑️</div>
+                        <div class="feature-text">
+                            <h5>Remove Tags</h5>
+                            <p>Click the ✖ button to remove unwanted tags</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="sprint-wizard-manual" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('sprint-wizard-manual')">✕</button>
+            <h3 style="color: var(--accent-light); margin-bottom: 1.5rem;">📖 SprintPlanWizard - Usage Manual</h3>
+            
+            <div class="manual-section">
+                <h4>🎯 Overview</h4>
+                <p>SprintPlanWizard filters Excel data based on cell colors and creates intelligent PivotTables with real-time progress tracking.</p>
+            </div>
+
+            <div class="manual-section">
+                <h4>📋 Prerequisites</h4>
+                <ul>
+                    <li>Excel with Office Scripts enabled</li>
+                    <li>Data with colored cells (highlighting important rows)</li>
+                    <li>Column headers in the first row</li>
+                    <li>Optional: "Story Point" column for zero-value filtering</li>
+                </ul>
+            </div>
+
+            <div class="manual-section">
+                <h4>🚀 How to Use</h4>
+                <ol>
+                    <li>Highlight important rows in your sprint data with colors</li>
+                    <li>Open Excel and go to <strong>Automate → New Script</strong></li>
+                    <li>Paste the SprintPlanWizard code</li>
+                    <li>Click <strong>Run</strong> to execute</li>
+                    <li>Monitor progress in cell A1 (shows percentage)</li>
+                    <li>View results in the new <strong>ColoredPivotTab</strong> sheet</li>
+                </ol>
+            </div>
+
+            <div class="manual-section">
+                <h4>🔍 Filtering Logic</h4>
+                <p>The script filters rows that meet ANY of these criteria:</p>
+                <ul>
+                    <li>Contains colored cells (any color except white)</li>
+                    <li>Has zero or empty value in "Story Point" column</li>
+                </ul>
+            </div>
+
+            <div class="manual-section">
+                <h4>✨ Key Features</h4>
+                <div class="features">
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-text">
+                            <h5>Smart Filtering</h5>
+                            <p>Automatically detects colored cells and zero-value rows</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⏱️</div>
+                        <div class="feature-text">
+                            <h5>Real-time Progress</h5>
+                            <p>Shows processing percentage in real-time</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-text">
+                            <h5>Dynamic Pivot</h5>
+                            <p>Creates configured PivotTable with Team and Key hierarchies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="manual-section">
+                <h4>⚙️ Customization</h4>
+                <p>To change the new sheet name, modify line 38:</p>
+                <code>let newSheetName = "ColoredPivotTab";</code>
+                <p style="margin-top: 1rem;">To add more pivot hierarchies, extend the configuration after line 104.</p>
+            </div>
+
+            <div class="manual-section">
+                <h4>🐛 Troubleshooting</h4>
+                <ul>
+                    <li><strong>Progress stuck:</strong> Check data range size; very large datasets may take time</li>
+                    <li><strong>No filtered results:</strong> Ensure rows have colored cells or zero Story Points</li>
+                    <li><strong>PivotTable empty:</strong> Verify Team and Key columns exist in your data</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- COPY NOTIFICATION -->
+    <div class="copy-notification" id="copyNotification">✅ Code copied to clipboard!</div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Sai V (PL6K130) | AI Scrum Master & Automation Expert</p>
+        <p style="margin-top: 1rem;">
+            <a href="https://www.linkedin.com/in/sai-v/" target="_blank">LinkedIn</a> • 
+            <a href="mailto:contact@example.com">Email</a> • 
+            <a href="#expertise">Expertise</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+            Specializing in Excel Automation, JQL Optimization, and Intelligent Sprint Planning
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        /**
+         * USAGE MANUAL FOR THIS HTML FILE
+         * 
+         * This is a single-file HTML portfolio showcasing AI Scrum Master expertise.
+         * 
+         * HOW TO USE:
+         * 1. Save this file as "portfolio.html"
+         * 2. Open in any modern web browser
+         * 3. Click "Copy Code" buttons to copy project code
+         * 4. Click "Manual" buttons to view detailed usage instructions
+         * 5. Share the file or upload to Netlify for hosting
+         * 
+         * FEATURES:
+         * - Responsive design (works on mobile, tablet, desktop)
+         * - Dark theme with cyan accent colors
+         * - Interactive code previews with syntax highlighting
+         * - Copy-to-clipboard functionality
+         * - Modal-based manuals for each project
+         * - LinkedIn watermark (bottom-right corner)
+         * - Smooth animations and transitions
+         * 
+         * CUSTOMIZATION:
+         * - Update LinkedIn URL in watermark and footer
+         * - Modify color scheme in :root CSS variables
+         * - Add more projects by duplicating code-container divs
+         * - Update expertise cards with your own skills
+         * 
+         * DEPLOYMENT:
+         * - Upload to Netlify, GitHub Pages, or any static hosting
+         * - No server-side processing required
+         * - Works entirely in the browser
+         * 
+         * BROWSER COMPATIBILITY:
+         * - Chrome/Edge: Full support
+         * - Firefox: Full support
+         * - Safari: Full support
+         * - Mobile browsers: Fully responsive
+         */
+
+        // Copy code to clipboard
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const text = codeElement.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                showCopyNotification();
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+
+        // Show copy notification
+        function showCopyNotification() {
+            const notification = document.getElementById('copyNotification');
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+
+        // Modal functions
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideIn 0.6s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe expertise cards and code containers
+        document.querySelectorAll('.expertise-card, .code-container').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
