@@ -1,7 +1,7 @@
-================================================================================
-  SCRUMLENS v0.3 — Chaos2Clarity (C2C)
-  Smart Transcript Digest Engine
-================================================================================
+SCRUMLENS v0.3 — Chaos2Clarity (C2C)
+Smart Transcript Digest Engine
+
+
   ABOUT:
   ------
   Chaos2Clarity (C2C) is the core philosophy behind ScrumLens — turning 
