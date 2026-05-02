@@ -1,4 +1,4 @@
-SCRUMLENS v0.3 — Chaos2Clarity (C2C)
+SCRUMLENS v0.4 — Chaos2Clarity (C2C)
 ------------------------------------
 Smart Transcript Digest Engine
 ------------------------------------
