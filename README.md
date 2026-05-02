@@ -16,7 +16,7 @@ Smart Transcript Digest Engine
   -----------------------
   Sai Varakala
   Email: suryasticsai@gmail.com
-  Web:   https://scrumlens.netlify.app
+  Web:   https://scrumlens.netlify.app or http://suryasticsai.github.io/ScrumLens/ 
 
   VERSION:
   --------
