@@ -23,6 +23,7 @@ Smart Transcript Digest Engine
   v0.4 — Sentiment analysis, talk ratio, word cloud, action checklist,
          JIRA/Notion export, drag & drop, theme toggle, local history,
          and demo transcript loader.
+  - - - - - 
   v0.3 — Single-tile UX, visual message chain, focus filters,
          role-based highlighting, custom tags, HTML export,
          and demo transcript loader.
